@@ -6,6 +6,7 @@ import Hero from "./components/Hero";
 import Footer from "./components/Footer";
 import About from "./components/About";
 import ProductCard from "./components/ProductCard";
+import ProductSkeleton from "./components/ProductSkeleton";
 
 //import products from "./data/product";
 
@@ -79,12 +80,10 @@ function App() {
           </div>
 
           {mensaje && <div className="mensaje-exito">{mensaje}</div>}
-          {cargando && (
-            <p className="mensaje-cargando"> Cargando Productos...</p>
-          )}
           {error && <div className="mensaje-error"> ⚠️ {error}</div>}
 
-          <div className="catalogo">
+          <div className="catalogo" aria-busy={cargando}>
+            {cargando && Array.from({ length: 8 }, (_, i) => <ProductSkeleton key={i} />)}
             {catalogo.map((product) => (
               <ProductCard
                 key={product.id}
