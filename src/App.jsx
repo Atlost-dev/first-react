@@ -70,7 +70,6 @@ function App() {
           );
         }
         const datos = await respuesta.json();
-        // La API devuelve { info, results }; origin y location son objetos.
         const personajesAdaptados = datos.results.map((p) => ({
           id: p.id,
           nombre: p.name,

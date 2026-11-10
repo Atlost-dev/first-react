@@ -11,7 +11,6 @@ function CharacterCard({ nombre, estatus, genero, origen, locacion, imagen }) {
         <div className="personaje_dato">
           <dt>Estatus</dt>
           <dd>
-            {/* La API usa "Alive", "Dead" o "unknown" */}
             <span
               className={`personaje_punto personaje_punto--${estatus.toLowerCase()}`}
             />
