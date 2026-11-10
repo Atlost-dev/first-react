@@ -273,6 +273,39 @@
   cursor: not-allowed;
 }
 
+/* ===== Personajes ===== */
+
+.personaje_imagen {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 16px;
+}
+
+.personaje_datos {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-bottom: 14px;
+  text-align: center;
+}
+
+.personaje_datos dt {
+  font-size: 12px;
+  color: var(--color-oscuro);
+}
+
+.personaje_datos dd {
+  margin: 0;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.personaje_locacion {
+  font-size: 14px;
+}
+
 /* ===== Sobre nosotros ===== */
 
 .sobre-nosotros {
