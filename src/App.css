@@ -303,37 +303,47 @@
 
 /* ===== Splash y error de carga ==== */
 /* ===== Skeleton del catálogo ==== */
-.skeleton__imagen,
-.skeleton__linea,
-.skeleton__boton {
+.skeleton-imagen,
+.skeleton-linea,
+.skeleton-boton {
   border-radius: 8px;
-  background: linear-gradient(90deg, var(--color-borde) 25%, #f3f4f6 50%, var(--color-borde) 75%);
+  background: linear-gradient(
+    90deg,
+    var(--color-borde) 25%,
+    #f3f4f6 50%,
+    var(--color-borde) 75%
+  );
   background-size: 200% 100%;
   animation: skeleton-brillo 1.4s ease-in-out infinite;
 }
 
-.skeleton__imagen {
+.skeleton-imagen {
   height: 180px;
   margin-bottom: 18px;
 }
 
-.skeleton__linea {
+.skeleton-linea {
   height: 16px;
   margin-bottom: 10px;
 }
 
-.skeleton__linea--corta {
+.skeleton-linea--corta {
   width: 40%;
   margin-bottom: 14px;
 }
 
-.skeleton__linea--precio {
+.skeleton-linea--precio {
   width: 35%;
   height: 24px;
   margin: 18px 0;
 }
 
-.skeleton__boton {
+.skeleton-linea--stock {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.skeleton-boton {
   height: 40px;
 }
 
