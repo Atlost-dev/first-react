@@ -1,4 +1,13 @@
+const ESTATUS = { Alive: "Vivo", Dead: "Muerto", unknown: "Desconocido" };
+const GENERO = {
+  Female: "Femenino",
+  Male: "Masculino",
+  Genderless: "Sin género",
+  unknown: "Desconocido",
+};
+
 function CharacterCard({ nombre, estatus, genero, origen, locacion, imagen }) {
+
   return (
     <article className="personaje">
       <img className="personaje_imagen" src={imagen} alt={nombre} />
@@ -14,12 +23,12 @@ function CharacterCard({ nombre, estatus, genero, origen, locacion, imagen }) {
             <span
               className={`personaje_punto personaje_punto--${estatus.toLowerCase()}`}
             />
-            {estatus}
+            {ESTATUS[estatus] ?? estatus}
           </dd>
         </div>
         <div className="personaje_dato">
           <dt>Género</dt>
-          <dd>{genero}</dd>
+          <dd>{GENERO[genero] ?? genero}</dd>
         </div>
       </dl>
 
