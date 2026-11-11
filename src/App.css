@@ -273,6 +273,110 @@
   cursor: not-allowed;
 }
 
+/* ===== Carta de Personajes ===== */
+
+.personaje {
+  display: flex;
+  flex-direction: column;
+  padding: 18px;
+  border: 1px solid var(--color-borde);
+  border-radius: 14px;
+  background-color: white;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.personaje:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.1);
+}
+
+.personaje_imagen {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 14px;
+}
+
+.personaje_origen {
+  margin-bottom: 4px;
+  color: var(--color-texto-suave);
+  font-size: 14px;
+}
+
+.personaje_nombre {
+  margin-bottom: 16px;
+  font-size: 22px;
+  line-height: 1.2;
+}
+
+.personaje_datos {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin: 0 0 16px;
+}
+
+.personaje_dato {
+  padding: 10px 12px;
+  border-radius: 10px;
+  background-color: var(--color-primario-suave);
+}
+
+.personaje_dato dt {
+  margin-bottom: 4px;
+  color: var(--color-texto-suave);
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.personaje_dato dd {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  color: var(--color-oscuro);
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.personaje_punto {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: grey;
+}
+
+.personaje_punto--alive {
+  background-color: green;
+}
+
+.personaje_punto--dead {
+  background-color: red;
+}
+
+.personaje_locacion {
+  margin-top: auto;
+  padding-top: 14px;
+  border-top: 1px solid var(--color-borde);
+}
+
+.personaje_locacion span {
+  color: var(--color-texto-suave);
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.personaje_locacion p {
+  margin-top: 4px;
+  color: var(--color-oscuro);
+  font-size: 16px;
+  font-weight: bold;
+}
+
 /* ===== Sobre nosotros ===== */
 
 .sobre-nosotros {

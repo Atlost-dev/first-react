@@ -7,6 +7,7 @@ import Footer from "./components/Footer";
 import About from "./components/About";
 import ProductCard from "./components/ProductCard";
 import ProductSkeleton from "./components/ProductSkeleton";
+import CharacterCard from "./components/CharacterCard";
 
 //import products from "./data/product";
 
@@ -16,11 +17,17 @@ function App() {
   const [cantidadCarrito, setCantidadCarrito] = useState(0);
   const [mensaje, setMensaje] = useState("");
   const [catalogo, setCatalogo] = useState(productos);
-  // carga:
+  // Carga:
   const [cargando, setCargando] = useState(true);
   const [error, setError] = useState("");
+  // Personajes:
+  const [personajes, setPersonajes] = useState([]);
+  const [cargandoPersonajes, setCargandoPersonajes] = useState(true);
+  const [errorPersonajes, setErrorPersonajes] = useState("");
 
   // Llamada a API:
+
+  //Productos:
   useEffect(() => {
     async function cargarProductos() {
       try {
@@ -48,6 +55,38 @@ function App() {
       }
     }
     cargarProductos();
+  }, []);
+
+  //Personajes:
+  useEffect(() => {
+    async function cargarPersonajes() {
+      try {
+        const respuesta = await fetch(
+          "https://rickandmortyapi.com/api/character",
+        );
+        if (!respuesta.ok) {
+          throw new Error(
+            `Error ${respuesta.status}: no se pudieron cargar los personajes`,
+          );
+        }
+        const datos = await respuesta.json();
+        const personajesAdaptados = datos.results.map((p) => ({
+          id: p.id,
+          nombre: p.name,
+          estatus: p.status,
+          genero: p.gender,
+          origen: p.origin.name,
+          locacion: p.location.name,
+          imagen: p.image,
+        }));
+        setPersonajes(personajesAdaptados);
+      } catch (error) {
+        setErrorPersonajes(error.message);
+      } finally {
+        setCargandoPersonajes(false);
+      }
+    }
+    cargarPersonajes();
   }, []);
 
   // Tiempo de mensaje
@@ -83,7 +122,8 @@ function App() {
           {error && <div className="mensaje-error"> ⚠️ {error}</div>}
 
           <div className="catalogo" aria-busy={cargando}>
-            {cargando && Array.from({ length: 8 }, (_, i) => <ProductSkeleton key={i} />)}
+            {cargando &&
+              Array.from({ length: 8 }, (_, i) => <ProductSkeleton key={i} />)}
             {catalogo.map((product) => (
               <ProductCard
                 key={product.id}
@@ -93,6 +133,32 @@ function App() {
                 precio={product.precio}
                 stock={product.stock}
                 onAgregar={() => handleAgregarProducto(product)}
+              />
+            ))}
+          </div>
+        </section>
+        <section className="seccion-productos" id="personajes">
+          <div className="titulo-seccion">
+            <p> Personajes </p>
+            <h2> Personajes de Rick and Morty</h2>
+          </div>
+
+          {errorPersonajes && (
+            <div className="mensaje-error"> ⚠️ {errorPersonajes}</div>
+          )}
+
+          <div className="catalogo" aria-busy={cargandoPersonajes}>
+            {cargandoPersonajes &&
+              Array.from({ length: 8 }, (_, i) => <ProductSkeleton key={i} />)}
+            {personajes.map((personaje) => (
+              <CharacterCard
+                key={personaje.id}
+                imagen={personaje.imagen}
+                nombre={personaje.nombre}
+                estatus={personaje.estatus}
+                genero={personaje.genero}
+                origen={personaje.origen}
+                locacion={personaje.locacion}
               />
             ))}
           </div>
