@@ -8,6 +8,7 @@ function Header({ cantidadCarrito }) {
       <nav className="navegacion">
         <a href="#inicio">Inicio</a>
         <a href="#productos">Productos</a>
+        <a href="#personajes">Personajes</a>
         <a href="#nosotros"> Sobre Nosotros</a>
         <a href="#contacto">Contacto</a>
       </nav>
